@@ -7,7 +7,8 @@ CREATE TABLE pokemons (
   id BIGSERIAL NOT NULL,
   number INT NOT NULL,
   name TEXT,
-  thumbnail_url TEXT
+  thumbnail_url TEXT,
+  active BOOLEAN
 );
 CREATE UNIQUE INDEX pokemons_pk ON pokemons (id);
 ALTER TABLE pokemons ADD PRIMARY KEY USING INDEX pokemons_pk;

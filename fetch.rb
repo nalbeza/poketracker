@@ -3,6 +3,8 @@ require 'awesome_print'
 require 'byebug'
 require 'json'
 require 'pg'
+require 'logging'
+require 'retries'
 
 class PokemonOccurence < Object
   attr_accessor :api_id
@@ -105,7 +107,6 @@ end
 def fetch_box(conn, lat1, lon1, lat2, lon2)
   from_lat, to_lat = [lat1, lat2].minmax
   from_lon, to_lon = [lon1, lon2].minmax
-  # This is the 'radius', higher values may work
   latitude_offset = 0.003255195915699005 * 1.5
   longitude_offset = 0.006510417442768812 * 1.5
   lat_steps = (from_lat..(to_lat + latitude_offset)).step(latitude_offset)
@@ -127,9 +128,17 @@ def fetch_box(conn, lat1, lon1, lat2, lon2)
 end
 
 conn = PG.connect(dbname: 'pokemap')
+logger = Logging.logger('./fetch.log')
+exception_handler = Proc.new do |exception, attempt_number, total_delay|
+  puts "Handler saw a #{exception.class}: '#{exception.message}'; retry attempt #{attempt_number}; #{total_delay} seconds have passed."
+  logger.warn(exception)
+end
 
 load_pokemons(conn)
 loop do
-  fetch_box(conn, 48.9080594, 2.2436142, 48.80912453, 2.45853424)
+  big_number = 4242424242
+  with_retries(base_sleep_seconds: 10, max_sleep_seconds: 60 * 5, max_tries: big_number, handler: exception_handler) do
+    fetch_box(conn, 48.9080594, 2.2436142, 48.80912453, 2.45853424)
+  end rescue nil
 end
 

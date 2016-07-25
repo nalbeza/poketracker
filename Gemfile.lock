@@ -7,11 +7,17 @@ GEM
       json (~> 1.8)
       multi_xml (>= 0.5.2)
     json (1.8.3)
+    little-plugger (1.1.4)
+    logging (2.1.0)
+      little-plugger (~> 1.1)
+      multi_json (~> 1.10)
+    multi_json (1.12.1)
     multi_xml (0.5.5)
     pg (0.18.4)
     rack (1.6.4)
     rack-protection (1.5.3)
       rack
+    retries (0.0.5)
     sinatra (1.4.7)
       rack (~> 1.5)
       rack-protection (~> 1.4)
@@ -25,7 +31,9 @@ DEPENDENCIES
   awesome_print
   byebug
   httparty
+  logging
   pg
+  retries
   sinatra
 
 BUNDLED WITH
