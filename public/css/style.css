@@ -1,0 +1,215 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+* {
+    font-family: 'Oswald', sans-serif;
+}
+
+body {
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 1em;
+    font-family: 'Oswald', sans-serif;
+}
+
+/*
+// darkblue #2c3e50
+// blue 3b546d
+// yellow f1a905
+// orange fe5b00
+// red ff2000
+// 
+// 
+// background: rgb(255,30,0);
+// background: -moz-linear-gradient(left,  rgba(255,30,0,1) 0%, rgba(255,84,0,1) 50%, rgba(239,180,6,1) 100%);
+// background: -webkit-linear-gradient(left,  rgba(255,30,0,1) 0%,rgba(255,84,0,1) 50%,rgba(239,180,6,1) 100%);
+// background: linear-gradient(to right,  rgba(255,30,0,1) 0%,rgba(255,84,0,1) 50%,rgba(239,180,6,1) 100%);
+// filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff1e00', endColorstr='#efb406',GradientType=1 );
+*/
+
+a {
+    color : inherit;
+    text-decoration: underline;
+}
+
+a:hover { 
+    text-decoration: none;
+}
+
+#header {
+    background-color: #2c3e50;
+    height: 150px;
+    padding: 20px;
+    color: white;
+    font-size : 0.7em;
+    text-transform: uppercase;
+}
+
+.grid-38 { 
+    width:  38%
+}
+.grid-62 {
+    width: 62%;
+}
+
+#header .logo img {
+    max-width: 100%;
+    width: auto;
+}
+
+#header .logo div {
+    width : auto;
+    margin-left: 92px;
+}
+
+#header .partenaires {
+    position: relative;
+    text-align: right;
+}
+
+#header .partenaires .and,
+#header .partenaires .logo_container {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#header .partenaires .logo_container {
+    max-width: 45%;
+    width: auto;
+}
+
+#header .partenaires .and {
+    width: 5%;
+    text-align: center;
+    height: 120px;
+    font-size : 2.5em;
+    line-height: 120px;
+    text-align: center;
+    color:white;
+}
+
+#search {
+    background-color: #3b546d;
+    padding: 0px 10px;
+}
+
+#search .form {
+    padding: 10px 0px;
+}
+
+#search input[type="text"] {
+    border: 0px;
+    height: 80px;
+    line-height: 1em;
+    font-size: 1em;
+    padding: 5px 20px;
+    font-weight: 300;
+    background-color: white;
+    width: 82%;
+    box-sizing: border-box;
+    float: left;
+}
+
+#search input[type="submit"] {
+    width: 80px;
+    height: 80px;
+    line-height: 1em;
+    float: left;
+    border: 0px solid white;
+    padding: 0px;
+    font-size: 1em;
+    color : white;
+    text-transform: uppercase;
+    cursor: pointer;
+
+    background: rgb(255,30,0);
+    background: -moz-linear-gradient(left,  rgba(255,30,0,1) 0%, rgba(255,84,0,1) 50%, rgba(239,180,6,1) 100%);
+    background: -webkit-linear-gradient(left,  rgba(255,30,0,1) 0%,rgba(255,84,0,1) 50%,rgba(239,180,6,1) 100%);
+    background: linear-gradient(to right,  rgba(255,30,0,1) 0%,rgba(255,84,0,1) 50%,rgba(239,180,6,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff1e00', endColorstr='#efb406',GradientType=1 );
+}
+
+#search .text {
+    font-size: 1em;
+    line-height: 1.5em;
+    padding-top: 6px;
+
+    color : white;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+#search .text .big {
+    font-size: 2.4em;
+    line-height: 1em;
+    letter-spacing: 2px;
+    color : #2c3e50;
+    margin-top: 6px;
+}
+
+#search .text .big .search {
+    color : #f1a905;
+}
+
+#search .text .big .find {
+    color : #fe5b00;
+}
+
+#search .text .big .capture {
+    color : #ff2000;
+}
+
+
+#map_container {
+
+}
+
+
+#map {
+  height: 100%;
+}
+
+#footer {
+    background-color: #3b546d;
+    text-align: center;
+    color : white;
+    position: fixed;
+    bottom: 0px;
+    font-size: 15px;
+    text-transform: uppercase;
+    padding: 10px 0px;
+}
+
+#footer a {
+    color : white;
+    text-decoration: none;
+    font-weight: bold;
+
+}
+
+#footer a:hover {
+    text-decoration: underline;
+}
+    
+.ui-menu .ui-menu-item a {
+    background-color: red;
+}
+
+
+ul.ui-autocomplete {
+    
+}
+ul.ui-autocomplete li {
+    line-height: 50px;
+    font-size: 25px;
+    text-transform: capitalize;
+    
+}
+
+ul.ui-autocomplete img {
+    height : 50px;
+    float : left;
+}

@@ -1,70 +1,91 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Heatmaps</title>
-    <style>
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-      #map {
-        height: 100%;
-      }
-    </style>
-  </head>
-  <body>
-    <input type="text" id="name" value="Eevee">
-    <button id="filter">Filter</button>
+<head>
+  <meta charset="utf-8">
+  <title>Heatmaps</title>
+  <link href='https://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
+  <link href='libs/jquery-ui-1.12.0/jquery-ui.min.css' rel='stylesheet' type='text/css'>
+  <link href='libs/jquery-ui-1.12.0/jquery-ui.theme.min.css' rel='stylesheet' type='text/css'>
+  <link href='libs/unsemantic.css' rel='stylesheet' type='text/css'>
+
+  <link href='css/base.css' rel='stylesheet' type='text/css'>
+  <link href='css/style.css' rel='stylesheet' type='text/css'>
+
+</head>
+<body>
+
+<div class="no-padding">
+  <section id="header" class="grid-100">
+    <div class="grid-38 grid-50 logo no-padding">
+      <img src="img/logo.png" alt="PokeTracker" />
+      <div class="grid-100 no-padding">
+        <span class="development">Développement</span> <a href="https://github.com/pause" target="_blank">Nicolas Albeza</a>
+      </div>
+    </div>
+
+    <div class="grid-62 grid-50 partenaires">
+        <div class="logo_container">
+          <a href="https://www.game2game.com" target="_blank">
+            <img src="img/logo_game2game.png" alt="Game2Game Échange de jeux vidéos"  target="_blank" /> 
+          </a>
+        </div>
+        <div class="and">&</div>
+        <div class="logo_container">
+          <a href="https://www.facebook.com/neokan.gaming" target="_blank">
+            <img src="img/logo_neokan.png" alt="Néokan"  target="_blank" />  
+          </a>
+        </div>
+    </div>
+  </section>
+
+  <section id="search" class="grid-100">
+    <div class="grid-60 form">
+      <form id="search_form" action="" method="GET">
+        <input type="text" id="pokename" class="pokename" placeholder="Rechercher un pokeon">
+        <input type="submit" id="filter" value="Go" />
+      </form>
+    </div>
+
+    <div class="grid-40 text">
+      <div>
+        Cartographie en <strong>temps réels</strong> des pokemons trouvables en Île de France
+      </div>
+      <div class="big">
+        <span class="search">Cherchez</span> / <span class="find"> Trouvez</span> / <span class="capture">Capturez</span> 
+      </div>
+    </div>
+  </section>
+
+  <section id="map_container" class="grid-100">
     <div id="map"></div>
-    <script>
-var map, heatmap, data;
+  </section>
 
-function initMap() {
-  data = new google.maps.MVCArray()
-  map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 13,
-    center: {lat: 48.856614 , lng: 2.352222},
-    mapTypeId: google.maps.MapTypeId.ROADMAP
-  });
-  heatmap = new google.maps.visualization.HeatmapLayer({
-    data: data,
-    map: map,
-    raduis: 20,
-    opacity: 1.0
-  });
-  button = document.getElementById('filter')
-  button.onclick = function() { loadPoints() };
-  loadPoints();
-}
 
-function loadPoints() {
-  var req = new XMLHttpRequest;  
-  var name = document.getElementById('name').value
+  <section id="footer" class="grid-100">
+    Copyright 2016 <a href="https://github.com/pause" class="hidden_link" target="_blank">Nicolas Albeza</a> et <a href="https://www.game2game.com" class="hidden_link" target="_blank">Game2Game.com</a>
+  </section>  
 
-  req.overrideMimeType("application/json");  
-  req.open('GET', 'http://localhost:4567/data?name=' + name);  
-  req.onload = function() {
-    if (req.status == 200) {  
-      var json = JSON.parse(req.responseText); 
-      data.clear();
-      json.data.forEach(function(e) {
-        latlng = new google.maps.LatLng(e.latitude, e.longitude)
-        data.push({location: latlng, weight: e.count});
-      });
-    }
-  };  
-  req.send();
+
   
-  return [
-    new google.maps.LatLng(37.751266, -122.403355)
-  ];
-}
+  <script src="libs/jquery-3.1.0.min.js"></script>  
+  <script src="libs/jquery-ui-1.12.0/jquery-ui.min.js"></script>  
 
-    </script>
-    <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBkPxQbbrbgHvzSW4YyKQ-6-ISx_nQiIZ0&signed_in=true&libraries=visualization&callback=initMap">
-    </script>
-  </body>
+  <script src="js/script.js"></script>  
+
+  <script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBkPxQbbrbgHvzSW4YyKQ-6-ISx_nQiIZ0&signed_in=true&libraries=visualization&callback=initMap">
+</script>
+
+  <script type="text/javascript">
+    $(function() {
+      var trad_en = {
+        "#header .development" : "Development",
+      };
+
+
+    });
+
+  </script>
+
+</body>
 </html>
